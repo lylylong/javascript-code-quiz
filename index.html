@@ -7,12 +7,31 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+    <!--A header that contains the score link and the timer-->
     <header>
       <div class="score-link">
         <a href="./score.html">View Your Scores Here</a>
       </div>
       <div class="timer">Time Left: <span id="time-left">0</span></div>
     </header>
+    <!--The main body that will show all quiz related contents-->
+    <main class="main">
+      <div id="intro" class="intro">
+        <!--quiz introduction-->
+        <h1>JavaScript Code Quiz</h1>
+        <p>
+          Following quiz provides Multiple Choice Questions related to
+          Javascript. You will have to read all the given choices and click over
+          the correct answer. There is a timer will count down when you start
+          the quiz. You will see your pick is correct or wrong after you click
+          on one of the choices. If your pick is not correct, there are 15
+          seconds will subtract from the time left. The quiz will stop when the
+          timer reaches 0. You will see your scores when you are done, input
+          your name and save your scores.
+        </p>
+        <button id="start-quiz" class="start-quiz">Start Now</button>
+      </div>
+    </main>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/q&a.js"></script>
   </body>

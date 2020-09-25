@@ -13,3 +13,33 @@ header .score-link a {
   text-decoration: none;
   color: hotpink;
 }
+main {
+  margin: 10px 300px;
+}
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.intro h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.intro p {
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+.intro button {
+  padding: 10px 30px;
+  background-color: royalblue;
+  border-radius: 1em;
+  font-size: 1.1rem;
+  color: white;
+  border: 0;
+  display: inline;
+}
+
+.intro button:hover {
+  background-color: hotpink;
+}
