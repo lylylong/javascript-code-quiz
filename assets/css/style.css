@@ -2,7 +2,8 @@
   margin: 0;
 }
 
-header {
+header,
+footer {
   display: flex;
   flex-wrap: wrap;
   margin: 50px;
@@ -21,16 +22,16 @@ main {
   flex-wrap: wrap;
   justify-content: center;
 }
-.intro h1 {
+h1 {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }
-.intro p {
+p {
   margin: 20px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }
-.intro button {
+button {
   padding: 10px 30px;
   background-color: royalblue;
   border-radius: 1em;
@@ -38,8 +39,41 @@ main {
   color: white;
   border: 0;
   display: inline;
+  outline: none;
 }
 
 .intro button:hover {
   background-color: hotpink;
+}
+.hide-1 {
+  display: none;
+}
+
+/*.hide-2 {
+  display: none;
+}*/
+
+/*.intro {
+  display: none;
+}*/
+
+h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+input {
+  margin: 0 30px 0 5px;
+  padding: 10px 30px;
+  border-radius: 0.5em;
+  font-size: 1.1rem;
+  color: royalblue;
+  border: 1px solid royalblue;
+  display: inline;
+  outline: none;
+}
+.feedback {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: grey;
 }
