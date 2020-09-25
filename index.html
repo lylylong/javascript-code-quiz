@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
+    <!-- TOP -->
     <!--A header that contains the score link and the timer-->
     <header>
       <div class="score-link">
@@ -14,10 +15,12 @@
       </div>
       <div class="timer">Time Left: <span id="time-left">0</span></div>
     </header>
-    <!--The main body that will show all quiz related contents-->
+    <!-- MAIN -->
+    <!--The main body, will show all quiz related contents-->
     <main class="main">
+      <!-- INTRO -->
+      <!--quiz introduction-->
       <div id="intro" class="intro">
-        <!--quiz introduction-->
         <h1>JavaScript Code Quiz</h1>
         <p>
           Following quiz provides Multiple Choice Questions related to
@@ -29,8 +32,33 @@
           timer reaches 0. You will see your scores when you are done, input
           your name and save your scores.
         </p>
-        <button id="start-quiz" class="start-quiz">Start Now</button>
+        <!--START BUTTON-->
+        <button id="to-start" class="to-start">Start Now</button>
       </div>
+      <!-- Q & C -->
+      <!--quiz pages-->
+      <div id="q&c" class="quiz-div hide">
+        <h2 id="questions"></h2>
+        <div id="choices" class="choices"></div>
+      </div>
+      <!-- DONE -->
+      <!--quiz done page-->
+      <div id="quiz-done" class="quiz-div hide">
+        <h2>Well Done!</h2>
+        <p>You final score is <span id="final-score"></span></p>
+        <p>
+          Enter Your Nickname:
+          <input type="text" id="nickname" max="10" /><button id="submit-name">
+            Submit
+          </button>
+        </p>
+      </div>
+      <!-- FEEDBACK -->
+      <!--tells the choice is right or wrong, go next question!-->
+      <footer id="feedback" class="hide">
+        <div id="feedback" class="feedback"></div>
+        <button>Next Question</button>
+      </footer>
     </main>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/q&a.js"></script>
