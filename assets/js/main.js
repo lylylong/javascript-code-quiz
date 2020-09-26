@@ -11,6 +11,7 @@ let currentQuestionIndex = 0;
 //QUIZ DONE
 let quizDoneDiv = document.getElementById("quiz-done");
 let finalScore = document.getElementById("final-score");
+let finalScoreNum = 0;
 
 //TIME
 let timeAll = 100;
@@ -92,6 +93,7 @@ function questionFeedback() {
     feedbackResult.textContent = "👍 Correct!";
     //release feedback
     feedbackDiv.removeAttribute("class");
+    finalScoreNum += 20;
   }
 
   //test if all questions are done
@@ -147,8 +149,8 @@ function quizDonePage() {
   quizDoneDiv.removeAttribute("class");
 
   //show final score, chnage to timeleft * 5
-  finalScore.textContent = questions.length * 20;
-  console.log("the final score is " + questions.length * 20);
+  finalScore.textContent = finalScoreNum;
+  console.log("the final score is " + finalScoreNum);
 }
 
 //RECEIVE CLICK - PROCERSS TO QUESTION PAGE
