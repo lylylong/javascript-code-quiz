@@ -23,7 +23,7 @@ let questions = [
   {
     title: "Which of these values is NOT considered false?",
     choices: ["0", '"0"', "null", "=="],
-    answer: "",
+    answer: '"0"',
   },
   {
     title: "Which statement correctly stores data into the Web Storage API?",

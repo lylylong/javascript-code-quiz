@@ -6,23 +6,27 @@ let quizDiv = document.getElementById("quiz-div");
 let currentQuestionTitle = document.querySelector("#questions");
 let currentQuestionChoices = document.querySelector("#choices-div");
 let eachChoice = document.querySelector("#choice");
-
-//CURRENT QUESTION INDEX
 let currentQuestionIndex = 0;
-let currentQuestionChoicesIndex = 0;
 
 //TIMER
+let timeAll = questions.length * 15;
+let timeLeft = document.getElementById("time-left");
 let timerId;
 
-//You can see question page now
+//FEEDBACK
+let feedbackDiv = document.getElementById("feedback-div");
+let feedbackResult = document.getElementById("feedback");
+let nextBtn = document.getElementById("next-btn");
+
+//JUMP TO QUESTION PAGE
 function showQuestionsPage() {
-  console.log("Question Page");
+  console.log("Question Page" + currentQuestionIndex);
 
   //hide intro page
   let intro = document.getElementById("intro");
   intro.setAttribute("class", "hide");
 
-  //un-block questions
+  //ready to release questions
   quizDiv.removeAttribute("class");
 
   //show questions
@@ -39,14 +43,54 @@ function showQuestionsPage() {
     eachChoiceBtn.setAttribute("class", "choice");
     eachChoiceBtn.setAttribute("value", choiceBtn);
     eachChoiceBtn.textContent = "►  " + choiceBtn;
-
-    eachChoiceBtn.onclick = questionResult;
+    //add choices to choices-div
     currentQuestionChoices.appendChild(eachChoiceBtn);
+    //click on one of the choices, will show current question feedback
+    eachChoiceBtn.onclick = questionFeedback;
   });
 }
 
-function questionResult() {}
+///////////
+//current question feedback
+function questionFeedback() {
+  if (this.value !== questions[currentQuestionIndex].answer) {
+    feedbackResult.textContent = "😔 Wrong";
+    //release feedback
+    feedbackDiv.removeAttribute("class");
+  } else {
+    feedbackResult.textContent = "👍 Correct!";
+    //release feedback
+    feedbackDiv.removeAttribute("class");
+  }
 
+  nextBtn.onclick = moreQuestions;
+}
+
+function moreQuestions() {
+  //hide the feedback again
+  feedbackDiv.setAttribute("class", "hide");
+  //move to next question
+  currentQuestionIndex++;
+  //show questions
+  let currentQuestion = questions[currentQuestionIndex];
+  currentQuestionTitle.textContent = currentQuestion.title;
+  //clear previous choices
+  currentQuestionChoices.innerHTML = "";
+  //show choices
+  currentQuestion.choices.forEach(function (choiceBtn, i) {
+    // create choice buttons
+    let eachChoiceBtn = document.createElement("button");
+    eachChoiceBtn.setAttribute("class", "choice");
+    eachChoiceBtn.setAttribute("value", choiceBtn);
+    eachChoiceBtn.textContent = "►  " + choiceBtn;
+    //add choices to choices-div
+    currentQuestionChoices.appendChild(eachChoiceBtn);
+    //click on one of the choices, will show current question feedback
+    eachChoiceBtn.onclick = questionFeedback;
+  });
+}
+
+//RECEIVE CLICK - PROCERSS TO QUESTION PAGE
 let startQuizHandler = function (event) {
   event.preventDefault();
   console.log("Now the quiz starts");
@@ -54,5 +98,4 @@ let startQuizHandler = function (event) {
 };
 
 //CLICK THE BUTTON TO START QUESTIONS
-//startBtn.addEventListener("click", startQuizHandler);
 startBtn.onclick = startQuizHandler;
