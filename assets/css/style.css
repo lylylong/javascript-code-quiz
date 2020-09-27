@@ -1,5 +1,6 @@
 * {
   margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header,
@@ -8,7 +9,6 @@ footer {
   flex-wrap: wrap;
   margin: 50px;
   justify-content: space-between;
-  font-family: Arial, Helvetica, sans-serif;
 }
 header .score-link a {
   text-decoration: none;
@@ -31,12 +31,10 @@ main,
 }
 
 h1 {
-  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }
 p {
   margin: 20px;
-  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
 }
 button {
@@ -54,7 +52,6 @@ button,
 }
 
 .choice {
-  font-family: Arial, Helvetica, sans-serif;
   align-items: center;
   display: block;
   margin: 20px 0;
@@ -70,7 +67,6 @@ button:hover,
 
 h2 {
   display: block;
-  font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   margin-bottom: 40px;
 }
@@ -86,13 +82,29 @@ input {
   outline: none;
 }
 .feedback {
-  font-family: Arial, Helvetica, sans-serif;
   font-size: 1.5rem;
   color: grey;
 }
 
+.current-note {
+  font-size: 1.5rem;
+  color: hotpink;
+}
+
+#submit-btn {
+  margin: 10px 0;
+}
+
+#next-btn {
+  background-color: hotpink;
+}
+
+#next-btn:hover {
+  background-color: royalblue;
+}
+
 .high-score-title {
-  margin-top: 150px;
+  margin-top: 110px;
   display: block;
 }
 
@@ -103,9 +115,12 @@ input {
   border-radius: 0.5em;
   font-size: 1.1rem;
   color: royalblue;
-  border: 1.5px solid royalblue;
   justify-content: center;
   list-style: none;
+  text-align: center;
+}
+.score-result ul {
+  padding-left: 0;
 }
 .go-back a {
   text-decoration: none;
@@ -113,10 +128,13 @@ input {
 }
 .go-back,
 .clear-score {
-  margin: 0 10px;
+  margin: 5px 10px;
 }
 .two-buttons {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+.no-click {
+  pointer-events: none;
 }

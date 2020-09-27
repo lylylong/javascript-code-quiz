@@ -37,7 +37,7 @@ function clockTick() {
   if (timeAll <= 0) {
     quizDonePage();
   }
-  console.log(timeAll);
+  console.log("remaining time is " + timeAll);
 }
 
 //JUMP TO QUESTION PAGE
@@ -62,6 +62,7 @@ function showQuestionsPage() {
     //create choice buttons
     let eachChoiceBtn = document.createElement("button");
     eachChoiceBtn.setAttribute("class", "choice");
+    eachChoiceBtn.setAttribute("id", "one-of-the-choice");
     eachChoiceBtn.setAttribute("value", choiceBtn);
     eachChoiceBtn.textContent = "►  " + choiceBtn;
     //add choices to choices-div
@@ -73,11 +74,14 @@ function showQuestionsPage() {
 
 //CURRENT QUESTION & CHOICE FEEDBACK
 function questionFeedback() {
+  let disableBtns = document.getElementById("quiz-div");
+  disableBtns.setAttribute("class", "no-click");
+
   //the timer show how much time left
   timeLeft.textContent = timeAll;
   //if the choice is wrong
   if (this.value !== questions[currentQuestionIndex].answer) {
-    feedbackResult.textContent = "😱 Wrong";
+    feedbackResult.textContent = "😱 Incorrect answer!";
     //release feedback
     feedbackDiv.removeAttribute("class");
     timeAll -= 15;
@@ -85,7 +89,7 @@ function questionFeedback() {
   }
   //if the choice is correct
   else {
-    feedbackResult.textContent = "👍 Correct! 🎉";
+    feedbackResult.textContent = "👍 Correct answer! 🎉";
     //release feedback
     feedbackDiv.removeAttribute("class");
     finalScoreNum += 20;
@@ -109,6 +113,8 @@ function moreQuestions() {
   }
   //hide the feedback again
   feedbackDiv.setAttribute("class", "hide");
+  //ready to release questions
+  quizDiv.removeAttribute("class");
   //move to next question
   currentQuestionIndex++;
   //show questions
@@ -121,6 +127,7 @@ function moreQuestions() {
     // create choice buttons
     let eachChoiceBtn = document.createElement("button");
     eachChoiceBtn.setAttribute("class", "choice");
+    eachChoiceBtn.setAttribute("id", "one-of-the-choice");
     eachChoiceBtn.setAttribute("value", choiceBtn);
     eachChoiceBtn.textContent = "►  " + choiceBtn;
     //add choices to choices-div
@@ -185,9 +192,8 @@ function saveHighScore(event) {
   }
 }
 
-///////////////////////????????
-///////////////////////????????
-function checkForEnter(event) {
+//More recent and much cleaner way to check user enter input use event.key
+function checkIfEnter(event) {
   if (event.key === "Enter") {
     saveHighScore();
   }

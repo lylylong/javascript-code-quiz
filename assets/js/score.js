@@ -18,6 +18,26 @@ let printHighScore = function () {
   });
 };
 
+//THE LAST SCORE FUNCTION
+let lastScore = function () {
+  //get saved score from localstorage, or empty array
+  let highScoreArr =
+    JSON.parse(window.localStorage.getItem("high-scores")) || [];
+  //   //compare which score is the hightest
+  //   highScoreArr.sort(function (a, b) {
+  //     return a.score - b.score;
+  //   });
+  //print the last score on the pink bar
+  highScoreArr.forEach(function (score) {
+    let lastTag = document.createElement("li");
+    lastTag.textContent =
+      score.nickname + " got " + score.score + " @ " + score.date;
+    let scorePrintBox = document.getElementById("last-score-box");
+    scorePrintBox.innerHTML = "";
+    scorePrintBox.appendChild(lastTag);
+  });
+};
+
 //REMOVE & RELOAD LOCAL STORAGE
 let clearScore = function () {
   window.localStorage.removeItem("high-scores");
@@ -30,3 +50,4 @@ toClearScore.onclick = clearScore;
 
 //CALL PRINT HIGH SCORE FUNCTION
 printHighScore();
+lastScore();

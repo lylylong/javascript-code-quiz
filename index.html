@@ -11,7 +11,7 @@
     <!--A header that contains the score link and the timer-->
     <header>
       <div class="score-link">
-        <a href="./score.html">View Your Highest Score Here</a>
+        <a href="./score.html">View Your Score Records Here</a>
       </div>
       <div class="timer">Time Left: <span id="time-left">0</span></div>
     </header>
@@ -40,14 +40,16 @@
       <div id="quiz-div" class="hide">
         <h2 id="questions"></h2>
         <div id="choices-div" class="choices-div">
-          <button id="choice" class="choice"></button>
+          <button id="one-of-the-choice" class="choice no-click"></button>
         </div>
       </div>
       <!-- DONE -->
       <!--quiz done page-->
       <div id="quiz-done" class="hide">
         <h2>Well Done!</h2>
-        <p>You final score is <span id="final-score"></span></p>
+        <p class="current-note">
+          You final score is <span id="final-score"></span>
+        </p>
         <p>
           Enter Your Nickname:
           <input type="text" id="nickname" name="nickname" max="10" /><button
@@ -60,7 +62,7 @@
       <!-- FEEDBACK -->
       <!--tells the choice is right or wrong, go next question!-->
       <footer id="feedback-div" class="hide">
-        <div id="feedback"></div>
+        <div id="feedback" class="feedback"></div>
         <button id="next-btn">Next</button>
       </footer>
     </main>
