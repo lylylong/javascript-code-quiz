@@ -1,4 +1,4 @@
-// set up questions and answers in an array
+// SETUP ALL QUESTIONS, CHOICES, ANSWERS
 let questions = [
   {
     title: "Which one is NOT a string in javascript?",

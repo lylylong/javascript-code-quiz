@@ -157,10 +157,9 @@ function saveHighScore(event) {
   }
   //if there is an input
   else {
-    //get saved score from localstorage, or reset array
+    //get saved score from localstorage, or empty array
     let highScoreArr =
       JSON.parse(window.localStorage.getItem("high-scores")) || [];
-
     //get the quiz time
     var today = new Date();
     var date =
@@ -172,19 +171,16 @@ function saveHighScore(event) {
     var time =
       today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + " " + time;
-
-    //format current score
+    //sort the current score object info, for future save into array
     let currentScore = {
       score: finalScoreNum,
       nickname: nicknameInput,
       date: dateTime,
     };
-
-    //save to localstorage
+    //save current score object to localstorage
     highScoreArr.push(currentScore);
     window.localStorage.setItem("high-scores", JSON.stringify(highScoreArr));
-
-    //to the your score page/last page
+    //link to the your score page/last page
     window.location.href = "score.html";
   }
 }
