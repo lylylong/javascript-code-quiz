@@ -24,9 +24,13 @@ let feedbackDiv = document.getElementById("feedback-div");
 let feedbackResult = document.getElementById("feedback");
 let nextBtn = document.getElementById("next-btn");
 
-//the process starts here:
-//////////////
-//time changing
+//SCORE
+let nicknameBox = document.getElementById("nickname");
+let submitBtn = document.getElementById("submit-btn");
+
+/////////////////// THE QUIZ STARTS ///////////////////
+
+//TIMER
 function clockTick() {
   timeAll--;
   timeLeft.textContent = timeAll;
@@ -36,34 +40,26 @@ function clockTick() {
   console.log(timeAll);
 }
 
-//////////////
-//////////////
-
 //JUMP TO QUESTION PAGE
 function showQuestionsPage() {
-  //START TIMER
+  //timer starts
   timer = setInterval(clockTick, 1000);
-  //starting time
+  //the timer show how much time left
   timeLeft.textContent = timeAll;
-
   //hide intro page
   let intro = document.getElementById("intro");
   intro.setAttribute("class", "hide");
-
   //ready to release questions
   quizDiv.removeAttribute("class");
-
   //show questions
   console.log("Question Page " + currentQuestionIndex + 1);
   let currentQuestion = questions[currentQuestionIndex];
   currentQuestionTitle.textContent = currentQuestion.title;
-
-  //clear previous choices
+  //clear html placeholders
   currentQuestionChoices.innerHTML = "";
-
   //show choices
   currentQuestion.choices.forEach(function (choiceBtn, i) {
-    // create choice buttons
+    //create choice buttons
     let eachChoiceBtn = document.createElement("button");
     eachChoiceBtn.setAttribute("class", "choice");
     eachChoiceBtn.setAttribute("value", choiceBtn);
@@ -75,14 +71,13 @@ function showQuestionsPage() {
   });
 }
 
-///////////
-//current question feedback
+//CURRENT QUESTION & CHOICE FEEDBACK
 function questionFeedback() {
+  //the timer show how much time left
   timeLeft.textContent = timeAll;
-
   //if the choice is wrong
   if (this.value !== questions[currentQuestionIndex].answer) {
-    feedbackResult.textContent = "😔 Wrong";
+    feedbackResult.textContent = "😱 Wrong";
     //release feedback
     feedbackDiv.removeAttribute("class");
     timeAll -= 15;
@@ -90,21 +85,24 @@ function questionFeedback() {
   }
   //if the choice is correct
   else {
-    feedbackResult.textContent = "👍 Correct!";
+    feedbackResult.textContent = "👍 Correct! 🎉";
     //release feedback
     feedbackDiv.removeAttribute("class");
     finalScoreNum += 20;
   }
-
-  //test if all questions are done
+  //check if all questions are done
   if (currentQuestionIndex === questions.length - 1) {
+    //all questions are done
     nextBtn.onclick = quizDonePage;
   } else {
+    //still work on questions
     nextBtn.onclick = moreQuestions;
   }
 }
 
+//THE NEXT QUESTION PAGE
 function moreQuestions() {
+  //the timer show how much time left
   timeLeft.textContent = timeAll;
   if (timeLeft <= 0) {
     quizDonePage();
@@ -113,13 +111,10 @@ function moreQuestions() {
   feedbackDiv.setAttribute("class", "hide");
   //move to next question
   currentQuestionIndex++;
-  /////////////////////////////////////////
-  ///////will put into a function/////////
-  console.log("Question Page " + currentQuestionIndex);
   //show questions
   let currentQuestion = questions[currentQuestionIndex];
   currentQuestionTitle.textContent = currentQuestion.title;
-  //clear previous choices
+  //clear html placeholders
   currentQuestionChoices.innerHTML = "";
   //show choices
   currentQuestion.choices.forEach(function (choiceBtn, i) {
@@ -133,31 +128,80 @@ function moreQuestions() {
     //click on one of the choices, will show current question feedback
     eachChoiceBtn.onclick = questionFeedback;
   });
-  ///////will put into a function/////////
-  /////////////////////////////////////////
 }
-
+//QUIZ END
 function quizDonePage() {
   //end timer
   clearInterval(timer);
-
   //hide the feedback again
   feedbackDiv.setAttribute("class", "hide");
   //hide the questions
   quizDiv.setAttribute("class", "hide");
   //show the quiz done div
   quizDoneDiv.removeAttribute("class");
-
-  //show final score, chnage to timeleft * 5
+  //show final score (each correct choices is 20)
   finalScore.textContent = finalScoreNum;
   console.log("the final score is " + finalScoreNum);
+}
+
+//SUBMIT NAME & SAVE
+submitBtn.onclick = saveHighScore;
+
+//CHECK INPUT & SAVE HIGH SCORE
+function saveHighScore(event) {
+  event.preventDefault();
+  let nicknameInput = document.querySelector("input[name='nickname']").value;
+  //if no input
+  if (!nicknameInput || nicknameInput == "") {
+    alert("⚠️You need to submit your name!");
+  }
+  //if there is an input
+  else {
+    //get saved score from localstorage, or reset array
+    let highScoreArr =
+      JSON.parse(window.localStorage.getItem("high-scores")) || [];
+
+    //get the quiz time
+    var today = new Date();
+    var date =
+      today.getFullYear() +
+      "-" +
+      (today.getMonth() + 1) +
+      "-" +
+      today.getDate();
+    var time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    var dateTime = date + " " + time;
+
+    //format current score
+    let currentScore = {
+      score: finalScoreNum,
+      nickname: nicknameInput,
+      date: dateTime,
+    };
+
+    //save to localstorage
+    highScoreArr.push(currentScore);
+    window.localStorage.setItem("high-scores", JSON.stringify(highScoreArr));
+
+    //to the your score page/last page
+    window.location.href = "score.html";
+  }
+}
+
+///////////////////////????????
+///////////////////////????????
+function checkForEnter(event) {
+  if (event.key === "Enter") {
+    saveHighScore();
+  }
 }
 
 //RECEIVE CLICK - PROCERSS TO QUESTION PAGE
 let startQuizHandler = function (event) {
   event.preventDefault();
   console.log("Now the quiz starts");
-
+  //show the first question
   showQuestionsPage();
 };
 

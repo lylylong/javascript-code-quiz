@@ -11,7 +11,7 @@
     <!--A header that contains the score link and the timer-->
     <header>
       <div class="score-link">
-        <a href="./score.html">View Your Scores Here</a>
+        <a href="./score.html">View Your Highest Score Here</a>
       </div>
       <div class="timer">Time Left: <span id="time-left">0</span></div>
     </header>
@@ -41,7 +41,6 @@
         <h2 id="questions"></h2>
         <div id="choices-div" class="choices-div">
           <button id="choice" class="choice"></button>
-          <button id="choice" class="choice"></button>
         </div>
       </div>
       <!-- DONE -->
@@ -51,7 +50,9 @@
         <p>You final score is <span id="final-score"></span></p>
         <p>
           Enter Your Nickname:
-          <input type="text" id="nickname" max="10" /><button id="submit-name">
+          <input type="text" id="nickname" name="nickname" max="10" /><button
+            id="submit-btn"
+          >
             Submit
           </button>
         </p>
