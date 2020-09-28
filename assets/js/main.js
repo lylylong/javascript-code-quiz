@@ -74,9 +74,9 @@ function showQuestionsPage() {
 
 //CURRENT QUESTION & CHOICE FEEDBACK
 function questionFeedback() {
+  //disable the choices after the initial click
   let disableBtns = document.getElementById("quiz-div");
   disableBtns.setAttribute("class", "no-click");
-
   //the timer show how much time left
   timeLeft.textContent = timeAll;
   //if the choice is wrong

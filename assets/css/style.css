@@ -2,7 +2,6 @@
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 header,
 footer {
   display: flex;
@@ -23,13 +22,11 @@ main,
   flex-wrap: wrap;
   justify-content: center;
 }
-
 .quiz-div {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-
 h1 {
   text-align: center;
 }
@@ -50,13 +47,11 @@ button,
   border: 0;
   outline: none;
 }
-
 .choice {
   align-items: center;
   display: block;
   margin: 20px 0;
 }
-
 button:hover,
 .choice:hover {
   background-color: hotpink;
@@ -64,13 +59,11 @@ button:hover,
 .hide {
   display: none;
 }
-
 h2 {
   display: block;
   text-align: center;
   margin-bottom: 40px;
 }
-
 input {
   margin: 0 30px 0 5px;
   padding: 10px 30px;
@@ -85,29 +78,23 @@ input {
   font-size: 1.5rem;
   color: grey;
 }
-
 .current-note {
   font-size: 1.5rem;
   color: hotpink;
 }
-
 #submit-btn {
   margin: 10px 0;
 }
-
 #next-btn {
   background-color: hotpink;
 }
-
 #next-btn:hover {
   background-color: royalblue;
 }
-
 .high-score-title {
   margin-top: 110px;
   display: block;
 }
-
 .score-box li {
   margin: 20px auto;
   padding: 10px 30px;
