@@ -31,6 +31,8 @@ https://github.com/lylylong/javascript-code-quiz.git
 
 ## Screenshots
 
+This gif demonstrates the quiz process:
+
 ![Final Gif](https://user-images.githubusercontent.com/70302749/94382718-c1a4c080-010b-11eb-9353-40f2648204ba.gif)
 
 ## Built With
